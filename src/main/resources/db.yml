@@ -1,3 +1,7 @@
 # RECOMENDABLE SOLO AÑADIR
 
-# Facturas
+# Invoices
+invoiceList:
+- &inv1
+  description: Productos primera necesidad
+
