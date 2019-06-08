@@ -2,12 +2,14 @@ package es.upm.miw.documents;
 
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.DBRef;
+import org.springframework.data.mongodb.core.mapping.Document;
 
 import java.math.BigDecimal;
 import java.text.SimpleDateFormat;
 import java.time.LocalDateTime;
 import java.util.Date;
 
+@Document
 public class Invoice {
 
     private static final String DATE_FORMAT = "yyyy";
