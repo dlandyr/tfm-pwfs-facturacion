@@ -7,6 +7,7 @@ import org.springframework.data.mongodb.core.mapping.Document;
 import java.math.BigDecimal;
 import java.text.SimpleDateFormat;
 import java.time.LocalDateTime;
+import java.util.Arrays;
 import java.util.Date;
 
 @Document
@@ -18,6 +19,8 @@ public class Invoice {
     private LocalDateTime creationDate;
     private String description;
 
+    private InvoiceLine[] invoiceLines;
+
     //@DBRef
    // private Client client;
 
@@ -25,10 +28,11 @@ public class Invoice {
         creationDate = LocalDateTime.now();
     }
 
-    public Invoice(int idOfYear,String description) {
+    public Invoice(int idOfYear,String description,InvoiceLine[] invoiceLines) {
         this();
         this.id = new SimpleDateFormat(DATE_FORMAT).format(new Date()) + idOfYear;
         this.description = description;
+        this.invoiceLines = invoiceLines;
     }
 
     public String getId() {
@@ -55,6 +59,14 @@ public class Invoice {
         this.description = description;
     }
 
+    public InvoiceLine[] getInvoiceLines() {
+        return invoiceLines;
+    }
+
+    public void setInvoiceLines(InvoiceLine[] invoiceLines) {
+        this.invoiceLines = invoiceLines;
+    }
+
     @Override
     public boolean equals(Object obj) {
         return this == obj || obj != null && getClass() == obj.getClass() && (id.equals(((Invoice) obj).id));
@@ -66,6 +78,7 @@ public class Invoice {
                 "id='" + id + '\'' +
                 ", creationDate=" + creationDate +
                 ", description='" + description + '\'' +
+                ", invoiceLines=" + Arrays.toString(invoiceLines) +
                 '}';
     }
 }
