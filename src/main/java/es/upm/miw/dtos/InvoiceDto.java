@@ -16,7 +16,7 @@ public class InvoiceDto {
     private String description;
 
     //private Client client;
-    private InvoiceLine[] invoiceLine;
+    private InvoiceLine[] invoiceLines;
 
     public InvoiceDto() {
         // Empty for framework
@@ -26,7 +26,13 @@ public class InvoiceDto {
         this.creationDate = invoice.getCreationDate();
         this.description = invoice.getDescription();
         //this.client = invoice.getClient();
-        this.invoiceLine = invoice.getInvoiceLines();
+        this.invoiceLines = invoice.getInvoiceLines();
+    }
+
+    public InvoiceDto(LocalDateTime creationDate, String description, InvoiceLine[] invoiceLines) {
+        this.creationDate = creationDate;
+        this.description = description;
+        this.invoiceLines = invoiceLines;
     }
 
     public LocalDateTime getCreationDate() {
@@ -45,12 +51,12 @@ public class InvoiceDto {
         this.description = description;
     }
 
-    public InvoiceLine[] getInvoiceLine() {
-        return invoiceLine;
+    public InvoiceLine[] getInvoiceLines() {
+        return invoiceLines;
     }
 
-    public void setInvoiceLine(InvoiceLine[] invoiceLine) {
-        this.invoiceLine = invoiceLine;
+    public void setInvoiceLines(InvoiceLine[] invoiceLines) {
+        this.invoiceLines = invoiceLines;
     }
 
     @Override
@@ -58,7 +64,7 @@ public class InvoiceDto {
         return "InvoiceDto{" +
                 "creationDate=" + creationDate +
                 ", description='" + description + '\'' +
-                ", invoiceLine=" + Arrays.toString(invoiceLine) +
+                ", invoiceLines=" + Arrays.toString(invoiceLines) +
                 '}';
     }
 }
