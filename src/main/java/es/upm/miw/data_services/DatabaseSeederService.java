@@ -45,7 +45,7 @@ public class DatabaseSeederService {
 
     private void initialize() {
         if (!this.invoiceRepository.existsById(VARIOUS_CODE)) {
-            LogManager.getLogger(this.getClass()).warn("------- Create Invoice -----------");
+            LogManager.getLogger(this.getClass()).warn("------- Create Invoices -----------");
             Invoice invoice = new Invoice();
             this.invoiceRepository.save(invoice);
         }
@@ -55,7 +55,6 @@ public class DatabaseSeederService {
         LogManager.getLogger(this.getClass()).warn("------- Delete All -----------");
         // Delete Repositories -----------------------------------------------------
         this.invoiceRepository.deleteAll();
-        // -------------------------------------------------------------------------
         this.initialize();
     }
 
