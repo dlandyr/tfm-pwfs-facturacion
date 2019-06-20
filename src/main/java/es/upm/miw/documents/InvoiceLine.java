@@ -1,11 +1,14 @@
 package es.upm.miw.documents;
 
+import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.Document;
 import java.math.BigDecimal;
 
 @Document
 public class InvoiceLine {
 
+    @DBRef
+    private Invoice invoice;
     private Integer quantity;
     private BigDecimal unitPrice;
     private BigDecimal calculatedTax;
@@ -14,8 +17,9 @@ public class InvoiceLine {
     public InvoiceLine() {
     }
 
-    public InvoiceLine(int quantity, BigDecimal unitPrice, BigDecimal calculatedTax, String productId) {
+    public InvoiceLine(Invoice invoice, int quantity, BigDecimal unitPrice, BigDecimal calculatedTax, String productId) {
         super();
+        this.invoice = invoice;
         this.quantity = quantity;
         this.unitPrice = unitPrice;
         this.calculatedTax = calculatedTax;
@@ -54,10 +58,19 @@ public class InvoiceLine {
         this.productId = productId;
     }
 
+    public Invoice getInvoice() {
+        return invoice;
+    }
+
+    public void setInvoice(Invoice invoice) {
+        this.invoice = invoice;
+    }
+
     @Override
     public String toString() {
         return "InvoiceLine{" +
-                "quantity=" + quantity +
+                "invoice=" + invoice +
+                ", quantity=" + quantity +
                 ", unitPrice=" + unitPrice +
                 ", calculatedTax=" + calculatedTax +
                 ", productId='" + productId + '\'' +
