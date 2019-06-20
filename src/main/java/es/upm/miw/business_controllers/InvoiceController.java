@@ -21,7 +21,7 @@ public class InvoiceController {
         for (InvoiceDto dto : invoiceRepository.findAllInvoices()) {
             for (InvoiceLine invoiceLine : dto.getInvoiceLines()) {
                 InvoiceDto invoiceDto ;
-                invoiceDto=new InvoiceDto(dto.getCreationDate(),dto.getDescription(),dto.getInvoiceLines());
+                invoiceDto=new InvoiceDto(dto.);
                 invoiceDtos.add(invoiceDto);
                 System.out.println("invoiceDto: " + invoiceDto);
                 System.out.println("Invoice line: " + invoiceLine);

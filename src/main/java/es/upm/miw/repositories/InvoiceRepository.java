@@ -9,6 +9,7 @@ import java.util.List;
 
 public interface InvoiceRepository extends MongoRepository<Invoice, String> {
 
-    @Query(value = "{}", fields = "{'id' : 0, 'description' : 1, 'creationDate' : 1, 'invoiceLines': 1}")
+    @Query(value = "{}", fields = "{'id' : 0, 'creationDate' : 1, 'description' : 2, 'tax' : 3, 'subtotal' : 4," +
+            "'discount' : 5, 'total' : 6, 'userId' : 7 ', 'customerId' : 8, 'enterpriseName' : 9, 'invoiceLines': 10}")
     List<InvoiceDto> findAllInvoices();
 }
