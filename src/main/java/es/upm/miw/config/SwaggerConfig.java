@@ -30,7 +30,7 @@ public class SwaggerConfig {
                 .securityContexts(this.securityContext());
     }
 
-    // http://localhost:8083/api/v0/swagger-ui.html
+    // http://localhost:8082/api/v0/swagger-ui.html
     private ApiInfo apiInfo() {
         return new ApiInfoBuilder().title("MIW. Universidad Politécnica de Madrid")
                 .description("TFM. PWFS - Microservicio de Facturacion. - " + "https://github.com/dlandyr/tfm-pwfs-facturacion").build();
