@@ -1,18 +1,15 @@
 package es.upm.miw.business_controllers;
 
-import es.upm.miw.documents.Invoice;
 import es.upm.miw.documents.InvoiceLine;
 import es.upm.miw.dtos.InvoiceDto;
 import es.upm.miw.dtos.InvoiceSearchDto;
-import es.upm.miw.exceptions.NotFoundException;
+import org.apache.logging.log4j.LogManager;
 import es.upm.miw.repositories.InvoiceRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 
 import java.util.ArrayList;
 import java.util.List;
-import es.upm.miw.dtos.InvoiceDto;
-import es.upm.miw.dtos.InvoiceSearchDto;
 
 @Controller
 public class InvoiceController {
@@ -20,21 +17,12 @@ public class InvoiceController {
     @Autowired
     private InvoiceRepository invoiceRepository;
 
-    /*public InvoiceDto create(String descriptionInvoice, String userId, String customerId, String enterpriseName, String[] idProducts, Integer[] quantity) {
-        InvoiceLine[] invoiceLines = new InvoiceLine[idProducts.length];
-        InvoiceSearchDto invoiceSearchDtos = new InvoiceSearchDto();
-        for (int i = 0; i < idProducts.length; i++) {
-            if(this.invoiceRepository.findById(idProducts[i]).isPresent()) {
-                String productId = invoiceSearchDtos.getDescriptionProduct();
-                if (productId == null) {
-                    //Aqui debe ir una excepcion
-                }
-                InvoiceLine invoiceLine= prepareInvoiceLine(invoiceSearchDtos, productId);
-                invoiceLines[i] = new InvoiceLine();
-            }
+    public InvoiceDto create(InvoiceDto invoice) {
+        for (InvoiceLine il : invoice.getInvoiceLines()) {
+            LogManager.getLogger("\t"+il.getProductId());
         }
-          return null;
-    }*/
+        return invoice;
+    }
 
    /* private InvoiceLine prepareInvoiceLine(InvoiceSearchDto invoiceSearchDto, String productId) {
         int stock = (invoiceSearchDto.getQuantity() == null) ? 10 : ProductDto.getStock();
